@@ -55,7 +55,7 @@ private
   end
 
   def car_params
-    params.require(:car).permit(:name, :category, :horse_power, :price_per_day, :transmision, :energy, :year_circulation, :city)
+    params.require(:car).permit(:name, :category, :horse_power, :price_per_day, :transmision, :energy, :year_circulation, :city, :photo)
   end
 
 end
