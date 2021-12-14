@@ -1,12 +1,14 @@
 <%= simple_form_for(car) do |f| %>
-  <%= f.input_field :name %>
-  <%= f.input_field :category %>
-  <%= f.input_field :horse_power %>
-  <%= f.input_field :price_per_day %>
-  <%= f.input_field :transmision %>
-  <%= f.input_field :energy %>
-  <%= f.input_field :year_circulation %>
-  <%= f.input_field :city %>
+<div class="form-inputs">
+  <%= f.input :name %>
+  <%= f.input :category %>
+  <%= f.input :horse_power %>
+  <%= f.input :price_per_day %>
+  <%= f.input :transmision %>
+  <%= f.input :energy %>
+  <%= f.input :year_circulation %>
+  <%= f.input :city %>
   <%= f.input :photo, as: :file %>
+  </div>
   <%= f.submit "Submit", class: "btn btn-default btn-primary m-3" %>
 <% end %>
