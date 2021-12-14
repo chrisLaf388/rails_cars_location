@@ -1,16 +1,15 @@
-<h1>Cars listes</h1>
+<h1>Listes des voitures</h1>
 
-<ul>
   <% @cars.each do |car|%>
-  <li>
-    <p>
-      <%= cl_image_tag car.photo.key, height: 300, width: 400, crop: :fill %>
-      <%= link_to "#{car.name}", car_path(car) %> - <%= car.category %> - <%= car.transmision %> -  <%= car.price_per_day %>€
+  <div class="main-container">
+      <div class="cards">
+      <div class="card"><%= cl_image_tag car.photo.key, crop: :fill %></div>
+      <div class="card"><%= link_to "#{car.name}", car_path(car) %> - <%= car.category %> - <%= car.transmision %> -  <%= car.price_per_day %>€ </div>
       <%# name: "Twingo", category: "Citadine", horse_power: 4, price_per_day: 10, transmision: "manuelle", energy: "Essence", year_circulation: 1991, city: "Marseille" %>
-    </p>
-  </li>
+    </div>
+  </div>
   <% end %>
-</ul>
+
 
 
 <%= link_to "Add a car", new_car_path, class: "btn btn-primary" %>

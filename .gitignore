@@ -41,5 +41,9 @@ yarn-debug.log*
 *.swp
 .DS_Store
 
+<<<<<<< HEAD
 # Debug cloudinary
+=======
+# Solving cloudinary issue
+>>>>>>> d1227faf428b811c00891f95d2d876cba014627b
 /config/cloudinary.yml
