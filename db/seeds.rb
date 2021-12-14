@@ -8,8 +8,8 @@ require "open-uri"
 #   Character.create(name: 'Luke', movie: movies.first)
 
 puts "destroy seed ! "
-Car.destroy_all
 Booking.destroy_all
+Car.destroy_all
 User.destroy_all
 puts "seeds beginning !!! "
 User.create!(email: "julien@gmail.com", password: "azerty")
