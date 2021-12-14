@@ -7,32 +7,36 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 puts "seeds beginning !!! "
+User.create(email: "julien@gmail.com", password: "azerty")
 
 Car.create(name: "Ferrari",
           category: "Sportive",
           horse_power: 30,
-          price_per: 50,
+          price_per_day: 50,
           transmision: "automatique",
           energy: "Essence",
           year_circulation: 2017,
-          city: "Marseille")
+          city: "Marseille",
+          user_id: 1)
 
 Car.create(name: "Porsh",
           category: "Sportive",
           horse_power: 22,
-          price_per: 60,
+          price_per_day: 60,
           transmision: "automatique",
           energy: "Essence",
           year_circulation: 2015,
-          city: "Marseille")
+          city: "Marseille",
+          user_id: 1)
 
-Car.create(name: "Twingo",
+Car.create!(name: "Twingo",
           category: "Citadine",
           horse_power: 4,
-          price_per: 10,
+          price_per_day: 10,
           transmision: "manuelle",
           energy: "Essence",
           year_circulation: 1991,
-          city: "Marseille")
+          city: "Marseille",
+          user_id: 1)
 
 puts "end of the Seeds"
