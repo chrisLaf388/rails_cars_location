@@ -2,7 +2,7 @@ class CarsController < ApplicationController
   before_action :set_car, except: [:index, :new, :create, :car_params]
 
   def index
-    @cars = Car.all
+    @cars = policy_scope(Car).order(updated_at: :desc)
   end
 
   def show

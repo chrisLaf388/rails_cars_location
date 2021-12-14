@@ -6,14 +6,16 @@ require "open-uri"
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+Car.destroy_all
+User.destroy_all
 
 puts "seeds beginning !!! "
-User.create(email: "julien@gmail.com", password: "azerty")
+user = User.create(email: "julien@gmail.com", password: "azerty")
 file = URI.open("https://images.pexels.com/photos/210019/pexels-photo-210019.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260")
 file2 =  URI.open("https://images.pexels.com/photos/170811/pexels-photo-170811.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260")
 file3 =  URI.open("https://images.pexels.com/photos/1592384/pexels-photo-1592384.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260")
 
-Car.create!(name: "Ferrari",
+car1 = Car.create!(name: "Ferrari",
           category: "Sportive",
           horse_power: 30,
           price_per_day: 50,
@@ -21,9 +23,9 @@ Car.create!(name: "Ferrari",
           energy: "Essence",
           year_circulation: 2017,
           city: "Marseille",
-          user_id: 1).photo.attach(io: file, filename: 'car1.png',content_type: 'image/png')
+          user: user).photo.attach(io: file, filename: 'car1.jpeg',content_type: 'image/jpeg')
 
-Car.create!(name: "Porsh",
+car2 = Car.new(name: "Porsh",
           category: "Sportive",
           horse_power: 22,
           price_per_day: 60,
@@ -31,9 +33,13 @@ Car.create!(name: "Porsh",
           energy: "Essence",
           year_circulation: 2015,
           city: "Marseille",
-          user_id: 1).photo.attach(io: file2, filename: 'car2.png', content_type: 'image/png')
+          user: user)
 
-Car.create!(name: "Twingo",
+
+          car2.photo.attach(io: file2, filename: 'car2.jpeg', content_type: 'image/jpeg')
+          car2.save!
+
+car3 = Car.new(name: "Twingo",
           category: "Citadine",
           horse_power: 4,
           price_per_day: 10,
@@ -41,10 +47,12 @@ Car.create!(name: "Twingo",
           energy: "Essence",
           year_circulation: 1991,
           city: "Marseille",
-          user_id: 1).photo.attach(io: file3, filename: 'car3.png', content_type: 'image/png')
+          user: user)
 
+          car3.photo.attach(io: file3, filename: 'car3.jpeg', content_type: 'image/jpeg')
+          car3.save!
 
- Booking.create!(start_at: Date.new(2001,2,3), end_at: Date.new(2001,4,5), total_price: 50, user_id: 1, car_id: 1)
- Booking.create!(start_at: Date.new(2002,2,3), end_at: Date.new(2004,4,5), total_price: 70, user_id: 1, car_id: 2)
+ Booking.create!(start_at: Date.new(2001,2,3), end_at: Date.new(2001,4,5), total_price: 50, user: user, car: car2)
+ Booking.create!(start_at: Date.new(2002,2,3), end_at: Date.new(2004,4,5), total_price: 70, user: user, car: car3)
 
 puts "end of the Seeds"
