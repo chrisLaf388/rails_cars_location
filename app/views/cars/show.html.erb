@@ -1,5 +1,5 @@
 <h1>Car show</h1>
-
+<%= cl_image_tag @car.photo.key, height: 300, width: 400, crop: :fill %>
 <ul>
   <li> Name: <%= @car.name %> </li>
   <li> Category: <%= @car.category %> </li>
@@ -15,9 +15,14 @@
 </ul>
 
 <%= link_to 'Back to list', cars_path, class: "btn btn-light" %>
+
+<% if policy(@car).update? %>
 <%= link_to 'Edit car', edit_car_path, class: "btn btn-primary"%>
+<% end %>
+<% if policy(@car).destroy? %>
 <%= link_to "Delete car",
             car_path(@car),
             method: :delete,
             class: "btn btn-danger",
             data: { confirm: "Are you sure?" } %>
+<% end %>
