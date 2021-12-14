@@ -1,3 +1,4 @@
+require "open-uri"
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
 #
@@ -8,8 +9,11 @@
 
 puts "seeds beginning !!! "
 User.create(email: "julien@gmail.com", password: "azerty")
+file = URI.open("https://images.pexels.com/photos/210019/pexels-photo-210019.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260")
+file2 =  URI.open("https://images.pexels.com/photos/170811/pexels-photo-170811.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260")
+file3 =  URI.open("https://images.pexels.com/photos/1592384/pexels-photo-1592384.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260")
 
-Car.create(name: "Ferrari",
+Car.create!(name: "Ferrari",
           category: "Sportive",
           horse_power: 30,
           price_per_day: 50,
@@ -17,9 +21,9 @@ Car.create(name: "Ferrari",
           energy: "Essence",
           year_circulation: 2017,
           city: "Marseille",
-          user_id: 1)
+          user_id: 1).photo.attach(io: file, filename: 'car1.png',content_type: 'image/png')
 
-Car.create(name: "Porsh",
+Car.create!(name: "Porsh",
           category: "Sportive",
           horse_power: 22,
           price_per_day: 60,
@@ -27,7 +31,7 @@ Car.create(name: "Porsh",
           energy: "Essence",
           year_circulation: 2015,
           city: "Marseille",
-          user_id: 1)
+          user_id: 1).photo.attach(io: file2, filename: 'car2.png', content_type: 'image/png')
 
 Car.create!(name: "Twingo",
           category: "Citadine",
@@ -37,6 +41,10 @@ Car.create!(name: "Twingo",
           energy: "Essence",
           year_circulation: 1991,
           city: "Marseille",
-          user_id: 1)
+          user_id: 1).photo.attach(io: file3, filename: 'car3.png', content_type: 'image/png')
+
+
+ Booking.create!(start_at: Date.new(2001,2,3), end_at: Date.new(2001,4,5), total_price: 50, user_id: 1, car_id: 1)
+ Booking.create!(start_at: Date.new(2002,2,3), end_at: Date.new(2004,4,5), total_price: 70, user_id: 1, car_id: 2)
 
 puts "end of the Seeds"
