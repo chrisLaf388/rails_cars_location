@@ -14,7 +14,76 @@
   .navbar-lewagon .navbar-brand img {
     width: 40px;
   }
+  // search
 
+  .simple_form {
+    display: flex;
+    justify-content: center;
+  }
+
+  .search-form-control {
+    margin-top: 10px;
+    position: relative;
+    width: 600px;
+  }
+  
+  .search-form-control .btn {
+    position: absolute;
+    top: 8px;
+    bottom: 8px;
+    right: 8px;
+  }
+  
+  .search-form-control .form-control {
+    height: 3.5rem;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+    border: 1px solid #E7E7E7;
+  }
+  
+  .search-form-control .form-control:focus {
+    border: 1px solid #1EDD88;
+    outline: none !important;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  }
+
+  // card home
+
+  .cards {
+    height: 300px;
+    background-image: url("https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg");
+  }
+
+  .flexible-btn {
+    display: inline-block;
+    text-align: center;
+    margin: auto;
+  }
+
+  .card-category {
+    display: flex;
+    justify-content: center;
+    height: 80%;
+  }
+
+  .slogan {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .btn-ghost {
+    color: white;
+    border: 1px solid #4A4A4A;
+    border-radius: 50px;
+    font-weight: lighter;
+    opacity: 0.6;
+    transition: opacity 0.3s ease;
+  }
+  
+  .btn-ghost:hover {
+    opacity: 1;
+  }
+  
 // cars card
 
 // .card-product {
