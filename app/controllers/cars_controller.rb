@@ -6,13 +6,16 @@ class CarsController < ApplicationController
   end
 
   def show
+    authorize @car
   end
 
   def edit
+    authorize @car
   end
 
   def update
-    @user = User.find("1")
+    authorize @car
+    @user = current_user
     @car.user = @user
     if @car.update(car_params)
       redirect_to car_path(@car)
@@ -23,12 +26,14 @@ class CarsController < ApplicationController
 
   def new
     @car = Car.new
+    authorize @car
   end
 
   def create
     @car = Car.new(car_params)
-    @user = User.find("1")
+    @user = current_user
     @car.user = @user
+    authorize @car
     if @car.save!
       redirect_to car_path(@car)
     else
@@ -37,6 +42,7 @@ class CarsController < ApplicationController
   end
 
   def destroy
+    authorize @car
     @car.destroy
     @car.save
     redirect_to cars_path
