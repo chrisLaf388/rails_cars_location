@@ -1,0 +1,14 @@
+<h1>Cars listes</h1>
+
+<ul>
+  <% @cars.each do |car|%>
+  <li>
+    <p>
+      <%= link_to "#{car.name}", car_path(car) %> - <%= car.category %> - <%= car.transmision %> -  <%= car.price_per_day %>€
+      <%# name: "Twingo", category: "Citadine", horse_power: 4, price_per_day: 10, transmision: "manuelle", energy: "Essence", year_circulation: 1991, city: "Marseille" %>
+    </p>
+  </li>
+  <% end %>
+</ul>
+
+<%= link_to "Add a car", new_car_path, class: "btn btn-primary" %>
