@@ -1,11 +1,11 @@
 <%= simple_form_for(@car) do |f| %>
-  <%= f.text_field :name %>
-  <%= f.text_field :category %>
-  <%= f.text_field :horse_power %>
-  <%= f.text_field :price_per_day %>
-  <%= f.text_field :transmision %>
-  <%= f.text_field :energy %>
-  <%= f.text_field :year_circulation %>
-  <%= f.text_field :city %>
+  <%= f.input_field :name %>
+  <%= f.input_field :category %>
+  <%= f.input_field :horse_power %>
+  <%= f.input_field :price_per_day %>
+  <%= f.input_field :transmision %>
+  <%= f.input_field :energy %>
+  <%= f.input_field :year_circulation %>
+  <%= f.input_field :city %>
   <%= f.submit "Submit", class: "btn btn-default btn-primary m-3" %>
 <% end %>
