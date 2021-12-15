@@ -22,3 +22,15 @@
     flex-grow: 1;
     margin-left: 20px;
   }
+
+  .cards a {
+    color: white;
+    text-decoration: none;
+    background-color: transparent;
+}
+
+.cards a:hover {
+    color: rgb(179, 174, 174);
+    text-decoration: underline;
+    background-color: transparent;
+}

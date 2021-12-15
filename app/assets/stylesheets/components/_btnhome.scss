@@ -9,8 +9,9 @@
   .btn-flex {
     margin-top: 30px;
   }
-  
+
   .btn-flat:hover {
-    background: black;
+    color: #d11d10;
+    background: white;
+    transition: background 0.5s ease;
   }
-  

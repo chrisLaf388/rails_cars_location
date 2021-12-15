@@ -9,11 +9,21 @@ h1 {
     position: absolute !important;
     top: 0px !important;
     left: 0px !important;
-} 
+}
 
 .card-grid {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-gap: 4px;
     flex-grow: 1;
+}
+
+.card-body {
+  position: relative
+}
+
+.card-body .btn {
+  position: absolute;
+  bottom: 14px;
+  left: 14px;
 }
