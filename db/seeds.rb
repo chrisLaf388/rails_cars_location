@@ -14,11 +14,8 @@ Booking.destroy_all
 Car.destroy_all
 User.destroy_all
 puts "seeds beginning !!! "
-<<<<<<< HEAD
 user = User.create(email: "julien@gmail.com", password: "azerty")
-=======
-User.create!(email: "julien@gmail.com", password: "azerty")
->>>>>>> d1227faf428b811c00891f95d2d876cba014627b
+
 file = URI.open("https://images.pexels.com/photos/210019/pexels-photo-210019.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260")
 file2 =  URI.open("https://images.pexels.com/photos/170811/pexels-photo-170811.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260")
 file3 =  URI.open("https://images.pexels.com/photos/1592384/pexels-photo-1592384.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260")
@@ -31,11 +28,8 @@ car1 = Car.create!(name: "Ferrari",
           energy: "Essence",
           year_circulation: 2017,
           city: "Marseille",
-<<<<<<< HEAD
           user: user).photo.attach(io: file, filename: 'car1.jpeg',content_type: 'image/jpeg')
-=======
-          user_id: User.all.last.id).photo.attach(io: file, filename: 'car1.jpeg',content_type: 'image/jpeg')
->>>>>>> d1227faf428b811c00891f95d2d876cba014627b
+
 
 car2 = Car.new(name: "Porsh",
           category: "Sportive",
@@ -45,12 +39,7 @@ car2 = Car.new(name: "Porsh",
           energy: "Essence",
           year_circulation: 2015,
           city: "Marseille",
-<<<<<<< HEAD
           user: user)
-=======
-          user_id: User.all.last.id).photo.attach(io: file2, filename: 'car2.jpeg', content_type: 'image/jpeg')
->>>>>>> d1227faf428b811c00891f95d2d876cba014627b
-
 
           car2.photo.attach(io: file2, filename: 'car2.jpeg', content_type: 'image/jpeg')
           car2.save!
@@ -63,21 +52,12 @@ car3 = Car.new(name: "Twingo",
           energy: "Essence",
           year_circulation: 1991,
           city: "Marseille",
-<<<<<<< HEAD
           user: user)
-=======
-          user_id: User.all.last.id).photo.attach(io: file3, filename: 'car3.jpeg', content_type: 'image/jpeg')
->>>>>>> d1227faf428b811c00891f95d2d876cba014627b
 
           car3.photo.attach(io: file3, filename: 'car3.jpeg', content_type: 'image/jpeg')
           car3.save!
 
-<<<<<<< HEAD
- Booking.create!(start_at: Date.new(2001,2,3), end_at: Date.new(2001,4,5), total_price: 50, user: user, car: car2)
- Booking.create!(start_at: Date.new(2002,2,3), end_at: Date.new(2004,4,5), total_price: 70, user: user, car: car3)
-=======
- Booking.create!(start_at: Date.new(2001,2,3), end_at: Date.new(2001,4,5), total_price: 50, user_id: User.all.last.id, car_id: Car.all.last.id)
- Booking.create!(start_at: Date.new(2002,2,3), end_at: Date.new(2004,4,5), total_price: 70, user_id: User.all.last.id, car_id: Car.all.first.id)
->>>>>>> d1227faf428b811c00891f95d2d876cba014627b
+Booking.create!(start_at: Date.new(2001,2,3), end_at: Date.new(2001,4,5), total_price: 50, user: user, car: car2)
+Booking.create!(start_at: Date.new(2002,2,3), end_at: Date.new(2004,4,5), total_price: 70, user: user, car: car3)
 
 puts "End of the Seeds"
