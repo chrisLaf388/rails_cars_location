@@ -11,4 +11,9 @@
   <%= f.input :photo, as: :file %>
   </div>
   <%= f.submit "Submit", class: "btn btn-default btn-primary m-3" %>
+  <% if car.name %>
+  <%= link_to "Cancel", car_path(car), class: "btn btn-secondary" %>
+  <% else %>
+  <%= link_to "Cancel", cars_path, class: "btn btn-secondary" %>
+  <% end %>
 <% end %>

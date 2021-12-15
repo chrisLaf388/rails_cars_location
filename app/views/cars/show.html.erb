@@ -1,22 +1,22 @@
 <div class="container">
-  <h1 class = "m-4 text-center"><%= @car.name %></h1>
-  <div class="container-group d-flex">
-    <ul class="list-group list-group-flush m-3">
-      <li class="list-group-item"> Name: <%= @car.name %> </li>
-      <li class="list-group-item"> Category: <%= @car.category %> </li>
-      <li class="list-group-item"> Horse Power: <%= @car.horse_power %> </li>
-      <li class="list-group-item"> Price per Day: <%= @car.price_per_day %> </li>
-      <li class="list-group-item"> Transmission: <%= @car.transmision %> </li>
-      <li class="list-group-item"> Energy: <%= @car.energy %> </li>
-      <li class="list-group-item"> Year of Circulation: <%= @car.year_circulation %> </li>
-      <li class="list-group-item"> City: <%= @car.city %> </li>
+
+  <div class="container-group d-flex mt-3">
+    <ul class="list-group list-group-flush mt-0 mr-3 ml-3 mb-3">
+      <li class="list-group-item"> <strong><u>Name:</u></strong> <%= @car.name %> </li>
+      <li class="list-group-item"> <strong><u>Category:</u></strong> <%= @car.category %> </li>
+      <li class="list-group-item"> <strong><u>Horse Power:</u></strong> <%= @car.horse_power %> hp</li>
+      <li class="list-group-item"> <strong><u>Price per Day:</u></strong> <%= @car.price_per_day %> € </li>
+      <li class="list-group-item"> <strong><u>Transmission:</u></strong> <%= @car.transmision %> </li>
+      <li class="list-group-item"> <strong><u>Energy:</u></strong> <%= @car.energy %> </li>
+      <li class="list-group-item"> <strong><u>Year:</u></strong> <%= @car.year_circulation %> </li>
+      <li class="list-group-item"> <strong><u>City:</u></strong> <%= @car.city %> </li>
       <button class = "btn btn-danger">Reserver!</button>
     </ul>
-    <%= cl_image_tag @car.photo.key, height: 600, width: 800, crop: :fill %>
+    <%= cl_image_tag @car.photo.key, height: 600, width: 800, crop: :fill, class:"rounded" %>
   </div>
 
   <div class="group-btn text-center m-4">
-    <%= link_to 'Back to list', cars_path, class: "btn btn-light" %>
+    <%= link_to 'Back to list', cars_path, class: "btn btn-secondary" %>
     <% if policy(@car).update? %>
     <%= link_to 'Edit car', edit_car_path, class: "btn btn-primary"%>
     <% end %>
