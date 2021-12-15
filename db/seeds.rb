@@ -6,9 +6,6 @@ require "open-uri"
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-Car.destroy_all
-User.destroy_all
-
 puts "destroy seed ! "
 Booking.destroy_all
 Car.destroy_all
