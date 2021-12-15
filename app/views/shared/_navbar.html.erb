@@ -1,6 +1,5 @@
-<%# navbar %>
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
-  <a class="navbar-brand" href="#">
+  <a  href="http://localhost:3000/" class="navbar-brand">
     <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/logo.png" />
   </a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -18,10 +17,10 @@
       </li>
       <% end %>
       <li class="nav-item active">
-        <a class="nav-link" href="#">Home</a>
+        <%= link_to 'Home', root_path, class:"nav-link", id:"navbar-links" %>
       </li>
       <li class="nav-item">
-        <a class="nav-link" id="navbar-links" href="#">Cars</a>
+        <%= link_to 'Cars', cars_path, class:"nav-link", id:"navbar-links" %>
       </li>
       <li class="nav-item dropdown">
         <img id="navbar-links" class="avatar dropdown-toggle" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="https://media.istockphoto.com/vectors/user-icon-flat-isolated-on-white-background-user-symbol-vector-vector-id1300845620?b=1&k=20&m=1300845620&s=170667a&w=0&h=JbOeyFgAc6-3jmptv6mzXpGcAd_8xqkQa_oUK2viFr8=" />
