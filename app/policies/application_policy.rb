@@ -32,6 +32,10 @@ class ApplicationPolicy
     update?
   end
 
+  def category?
+    true
+  end
+
   def destroy?
     @record.user == @user
   end

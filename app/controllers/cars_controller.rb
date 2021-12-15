@@ -1,5 +1,5 @@
 class CarsController < ApplicationController
-  before_action :set_car, except: [:index, :new, :create, :car_params]
+  before_action :set_car, except: [:index, :new, :create, :car_params, :category]
 
   def index
     @cars = policy_scope(Car).order(updated_at: :desc)
@@ -46,6 +46,11 @@ class CarsController < ApplicationController
     @car.destroy
     @car.save
     redirect_to cars_path
+  end
+
+  def category
+    @cars = Car.where(category: params[:category])
+    authorize @cars
   end
 
 private
