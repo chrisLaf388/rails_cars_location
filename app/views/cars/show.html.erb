@@ -1,30 +1,31 @@
-<div class="container text-center">
-  <h1 class = "m-4">Car show</h1>
-  <%= cl_image_tag @car.photo.key, height: 300, width: 400, crop: :fill %>
-  <ul class="list-group list-group-flush m-3">
-    <li class="list-group-item"> Name: <%= @car.name %> </li>
-    <li class="list-group-item"> Category: <%= @car.category %> </li>
-    <li class="list-group-item"> Horse Power: <%= @car.horse_power %> </li>
-    <li class="list-group-item"> Price per Day: <%= @car.price_per_day %> </li>
-    <li class="list-group-item"> Transmission: <%= @car.transmision %> </li>
-    <li class="list-group-item"> Energy: <%= @car.energy %> </li>
-    <li class="list-group-item"> Year of Circulation: <%= @car.year_circulation %> </li>
-    <li class="list-group-item"> City: <%= @car.city %> </li>
-    <li class="list-group-item"> User ID: <%= @car.user_id %> </li>
-    <li class="list-group-item"> Created at: <%= @car.created_at %> </li>
-    <li class="list-group-item"> Updated at: <%= @car.updated_at %> </li>
-  </ul>
+<div class="container">
+  <h1 class = "m-4 text-center"><%= @car.name %></h1>
+  <div class="container-group d-flex">
+    <ul class="list-group list-group-flush m-3">
+      <li class="list-group-item"> Name: <%= @car.name %> </li>
+      <li class="list-group-item"> Category: <%= @car.category %> </li>
+      <li class="list-group-item"> Horse Power: <%= @car.horse_power %> </li>
+      <li class="list-group-item"> Price per Day: <%= @car.price_per_day %> </li>
+      <li class="list-group-item"> Transmission: <%= @car.transmision %> </li>
+      <li class="list-group-item"> Energy: <%= @car.energy %> </li>
+      <li class="list-group-item"> Year of Circulation: <%= @car.year_circulation %> </li>
+      <li class="list-group-item"> City: <%= @car.city %> </li>
+      <button class = "btn btn-danger">Reserver!</button>
+    </ul>
+    <%= cl_image_tag @car.photo.key, height: 600, width: 800, crop: :fill %>
+  </div>
 
-  <%= link_to 'Back to list', cars_path, class: "btn btn-light" %>
-
-  <% if policy(@car).update? %>
-  <%= link_to 'Edit car', edit_car_path, class: "btn btn-primary"%>
-  <% end %>
-  <% if policy(@car).destroy? %>
-  <%= link_to "Delete car",
-              car_path(@car),
-              method: :delete,
-              class: "btn btn-danger",
-              data: { confirm: "Are you sure?" } %>
-  <% end %>
+  <div class="group-btn text-center m-4">
+    <%= link_to 'Back to list', cars_path, class: "btn btn-light" %>
+    <% if policy(@car).update? %>
+    <%= link_to 'Edit car', edit_car_path, class: "btn btn-primary"%>
+    <% end %>
+    <% if policy(@car).destroy? %>
+    <%= link_to "Delete car",
+                car_path(@car),
+                method: :delete,
+                class: "btn btn-danger",
+                data: { confirm: "Are you sure?" } %>
+    <% end %>
+  </div>
 </div>
