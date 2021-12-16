@@ -27,15 +27,14 @@ class BookingsController < ApplicationController
   end
 
   def accept
+    @booking = Booking.find(params[:id])
     authorize @booking
     @booking.status = true
-    raise
   end
 
   def decline
     authorize @booking
     @booking.status = false
-    raise
   end
 
   private
