@@ -2,7 +2,6 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#home'
   resources :cars
-  get '/cars/category/:category', to: 'cars#category', as: :car_category
   resources :bookings, only: [:new, :create, :destroy]
   patch '/bookings/:id', to: 'bookings#accept', as: :accept_booking
   patch '/bookings/:id', to: 'bookings#decline', as: :decline_booking
