@@ -1,0 +1,45 @@
+<div class="notification">
+  <%# <%= link_to car.name, car_path(car), background-image: url(cl_image_path car.photo.key) ,class: "img-large" %>
+    <img src= "<%= cl_image_path car.photo.key%>", class="img-large" />
+
+  <div class="notification-content">
+    <% if format == "pending" %>
+      <p><%= user.email %> wants to drive your <%= link_to car.name, car_path(car) %></p>
+    <% elsif format == "booking" %>
+      <p>You want wants to drive this <%= link_to car.name, car_path(car) %> Belong : <%= user.email %> </p>
+    <% end %>
+    <p><strong>From : </strong><small><%= booking.start_at %></small>, <strong>To : </strong><small><%= booking.end_at %></small></p>
+    <p class="text-danger"><%= booking.total_price %>€</p>
+  </div>
+
+  <div class="notification-actions">
+    <% if format == "pending" %>
+      <% if booking.status.nil? %>
+        <%= link_to accept_booking_path(booking), method: :patch do %>
+          <i class="fas fa-check-circle text-success"></i>
+        <% end %>
+        <%= link_to decline_booking_path(booking), method: :patch do %>
+          <i class="fas fa-ban text-danger"></i>
+        <% end %>
+      <% elsif booking.status.present? %>
+        <i class="fas fa-check-circle text-success"></i>
+      <% else %>
+        <i class="fas fa-ban text-danger"></i>
+      <% end %>
+    <% elsif format == "booking" %>
+      <% if booking.status == true %>
+        <i class="fas fa-check-circle text-success"></i>
+      <% elsif booking.status == false %>
+        <i class="fas fa-ban text-danger"></i>
+      <% else %>
+        <i class="fas fa-hourglass-half text-info"></i>
+      <% end %>
+      <%= link_to booking_path(booking),
+          method: :delete,
+          class: "text-danger",
+          data: { confirm: "Are you sure?" } do %>
+            <i class="fas fa-trash-alt"></i>
+      <% end %>
+    <% end %>
+  </div>
+</div>
