@@ -40,6 +40,14 @@ class ApplicationPolicy
     @record.user == @user
   end
 
+  def accept?
+    @user == @record.car.user
+  end
+
+  def decline?
+    accept?
+  end
+
   class Scope
     def initialize(user, scope)
       @user = user
