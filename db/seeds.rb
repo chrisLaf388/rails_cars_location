@@ -18,7 +18,7 @@ file2 =  URI.open("https://images.pexels.com/photos/170811/pexels-photo-170811.j
 file3 =  URI.open("https://images.pexels.com/photos/1592384/pexels-photo-1592384.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260")
 
 car1 = Car.create!(name: "Ferrari",
-          category: "Sportive",
+          category: "Sportscar",
           horse_power: 30,
           price_per_day: 50,
           transmision: "automatique",
@@ -29,7 +29,7 @@ car1 = Car.create!(name: "Ferrari",
 
 
 car2 = Car.new(name: "Porsh",
-          category: "Sportive",
+          category: "Sportscar",
           horse_power: 22,
           price_per_day: 60,
           transmision: "automatique",
@@ -42,7 +42,7 @@ car2 = Car.new(name: "Porsh",
           car2.save!
 
 car3 = Car.new(name: "Twingo",
-          category: "Citadine",
+          category: "City Car",
           horse_power: 4,
           price_per_day: 10,
           transmision: "manuelle",
