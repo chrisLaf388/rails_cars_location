@@ -3,10 +3,11 @@ class CarsController < ApplicationController
 
   def index
     @cars = policy_scope(Car).order(updated_at: :desc)
-    @markers = @cars.geocoded.map do |flat|
+    @markers = @cars.geocoded.map do |car|
       {
-        lat: flat.latitude,
-        lng: flat.longitude
+        lat: car.latitude,
+        lng: car.longitude,
+        info_window: render_to_string(partial: "info_window", locals: { car: car })
       }
     end
   end
