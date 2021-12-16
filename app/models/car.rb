@@ -17,5 +17,7 @@ class Car < ApplicationRecord
     using: {
       tsearch: { prefix: true } # <-- now `superman batm` will return something!
     }
-
+  
+  geocoded_by :city
+  after_validation :geocode, if: :will_save_change_to_city?
 end
