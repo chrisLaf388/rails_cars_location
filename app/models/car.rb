@@ -10,4 +10,7 @@ class Car < ApplicationRecord
     message: "%{value} is not a valid category" }
   validates :city, presence: true
   validates :price_per_day, presence: true, numericality: { greater_than: 0 }
+
+  geocoded_by :city
+  after_validation :geocode, if: :will_save_change_to_city?
 end
