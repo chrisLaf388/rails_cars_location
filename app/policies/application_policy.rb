@@ -45,7 +45,7 @@ class ApplicationPolicy
   end
 
   def decline?
-    accept?
+    @user == @record.car.user
   end
 
   class Scope
