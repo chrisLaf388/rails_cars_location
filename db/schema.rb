@@ -10,7 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 2021_12_16_095558) do
+=======
+ActiveRecord::Schema.define(version: 2021_12_15_185214) do
+>>>>>>> 6e0c2db06eabd202ecbfcd87433692e2a3e50c6f
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -51,6 +55,7 @@ ActiveRecord::Schema.define(version: 2021_12_16_095558) do
     t.integer "total_price"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.boolean "status"
     t.index ["car_id"], name: "index_bookings_on_car_id"
     t.index ["user_id"], name: "index_bookings_on_user_id"
   end

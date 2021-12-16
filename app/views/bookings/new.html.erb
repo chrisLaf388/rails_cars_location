@@ -1,0 +1,10 @@
+<%= simple_form_for(@booking) do |f| %>
+  <div class="form-inputs">
+    <%= f.input :car_id %>
+    <%= f.input :user_id %>
+    <%= f.input :start_at %>
+    <%= f.input :end_at %>
+    <%= f.input :total_price %>
+  </div>
+  <%= f.submit "Submit", class: "btn btn-default btn-primary m-3" %>
+<% end %>

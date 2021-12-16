@@ -10,7 +10,7 @@
       <li class="list-group-item"> <strong><u>Energy:</u></strong> <%= @car.energy %> </li>
       <li class="list-group-item"> <strong><u>Year:</u></strong> <%= @car.year_circulation %> </li>
       <li class="list-group-item"> <strong><u>City:</u></strong> <%= @car.city %> </li>
-      <button class = "btn btn-danger">Reserver!</button>
+      <%= link_to "Reserver!", new_booking_path(@car), class: "btn btn-danger"%>
     </ul>
     <%= cl_image_tag @car.photo.key, height: 600, width: 800, crop: :fill, class:"rounded" %>
   </div>
