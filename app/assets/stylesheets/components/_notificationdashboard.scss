@@ -31,16 +31,17 @@
   opacity: 0.7;
   display: flex;
   transition: ease .3s;
+  width: 5%;
 }
 
 .notification:hover .notification-actions {
   opacity: 1;
 }
 
-.notification .notification-actions a {
+.notification .notification-actions i {
   color: #999999;
-  margin-left: 16px;
-  font-size: 14px;
+  margin-right: 4px;
+  font-size: 20px;
 }
 
 .notification .notification-actions a:hover {
