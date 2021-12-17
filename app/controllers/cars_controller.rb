@@ -27,6 +27,7 @@ class CarsController < ApplicationController
     #   console
     #   raise
     end
+
     @markers = @cars.geocoded.map do |car|
         {
           lat: car.latitude,
@@ -65,7 +66,7 @@ class CarsController < ApplicationController
     @user = current_user
     @car.user = @user
     authorize @car
-    if @car.save!
+    if @car.save
       redirect_to car_path(@car)
     else
       render 'new'
