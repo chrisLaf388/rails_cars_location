@@ -48,6 +48,10 @@ class ApplicationPolicy
     @user == @record.car.user
   end
 
+  def mine?
+    true
+  end
+
   class Scope
     def initialize(user, scope)
       @user = user

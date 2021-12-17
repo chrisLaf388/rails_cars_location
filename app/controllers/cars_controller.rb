@@ -6,15 +6,15 @@ class CarsController < ApplicationController
       #  @cars = Car.all
     if params["query"].present?
       @cars = Car.search_by_name_and_category_city(params["query"])
-    elsif params["name"].present?
+    elsif params.keys == ["controller", "action"]
+      @cars = policy_scope(Car).order(updated_at: :desc)
+    else
       @cars = policy_scope(Car).order(updated_at: :desc)
       @cars = @cars.search_by_name(params["name"]) unless params["name"].empty?
       @cars = @cars.search_by_category(params["category"]) unless params["category"].empty?
       @cars = @cars.search_by_transmision(params["transmision"]) unless params["transmision"].empty?
       @cars = @cars.search_by_energy(params["energy"]) unless params["energy"].empty?
       @cars = @cars.search_by_city(params["city"]) unless params["city"].empty?
-    else
-      @cars = policy_scope(Car).order(updated_at: :desc)
     end
 
     @markers = @cars.geocoded.map do |car|
@@ -76,10 +76,16 @@ class CarsController < ApplicationController
     authorize @cars
   end
 
+  def mine
+    @user = User.find(params[:user_id]) if params[:user_id].present?
+    @cars = Car.where(user: @user)
+    authorize @cars
+  end
+
 private
 
   def set_car
-    @car = Car.find(params[:id])
+    @car = Car.find(params[:id]) if params[:id].present?
   end
 
   def car_params

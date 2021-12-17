@@ -4,4 +4,6 @@ class CarPolicy < ApplicationPolicy
       scope.all
     end
   end
+  def create?
+  end
 end
