@@ -2,19 +2,38 @@ class CarsController < ApplicationController
   before_action :set_car, except: [:index, :new, :create, :car_params, :category]
 
   def index
-    if params[:query].present?
-      @cars = Car.search_by_name_and_category_city(params[:query]).order(updated_at: :desc)
+    console
+    if params.keys == ["controller", "action"]
+      @cars = Car.all
+    elsif params["query"].present?
+      @cars = Car.search_by_name_and_category_city(params["query"])
     else
       @cars = policy_scope(Car).order(updated_at: :desc)
+      @cars = @cars.search_by_name(params["name"]) unless params["name"].empty?
+      @cars = @cars.search_by_category(params["search_by_category"]) unless params["category"].empty?
+      @cars = @cars.search_by_transmision(params["transmision"]) unless params["transmision"].empty?
+      @cars = @cars.search_by_energy(params["energy"]) unless params["energy"].empty?
+      @cars = @cars.search_by_city(params["city"]) unless params["city"].empty?
+
+
+    #   @cars = Car.where(nil)
+    #   raise
+    #   @cars = @cars.filter_by_name(params["name"]) unless params["name"].empty?
+    #   @cars = @cars.filter_by_category(params["category"]) unless params["category"].empty?
+    #   @cars = @cars.filter_by_energy(params["energy"]) unless params["energy"].empty?
+    #   @cars = @cars.filter_by_transmision(params["transmision"]) unless params["transmision"].empty?
+    #   @cars = @cars.filter_by_max_price(params["max_price"]) unless params["max_price"].empty?
+    # #   city: params["city"],
+    #   console
+    #   raise
     end
-    console
     @markers = @cars.geocoded.map do |car|
-      {
-        lat: car.latitude,
-        lng: car.longitude,
-        info_window: render_to_string(partial: "info_window", locals: { car: car })
-      }
-    end
+        {
+          lat: car.latitude,
+          lng: car.longitude,
+          info_window: render_to_string(partial: "info_window", locals: { car: car })
+        }
+      end
   end
 
   def show
@@ -75,4 +94,15 @@ private
     params.require(:car).permit(:name, :category, :horse_power, :price_per_day, :transmision, :energy, :year_circulation, :city, :photo)
   end
 
+  def filtering_params
+    # params.permit(:name, "category", "energy", :city, :max_price, "transmision")
+    # return {
+    #   category: params["category"],
+    #   name: params["name"],
+    #   energy: params["energy"],
+    #   city: params["city"],
+    #   max_price: params["max_price"],
+    #   transmision: params["transmision"]
+    # }
+  end
 end
