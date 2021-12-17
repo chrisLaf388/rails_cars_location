@@ -7,7 +7,7 @@ class CarsController < ApplicationController
     else
       @cars = policy_scope(Car).order(updated_at: :desc)
     end
-    
+
     @markers = @cars.geocoded.map do |car|
       {
         lat: car.latitude,
@@ -46,7 +46,7 @@ class CarsController < ApplicationController
     @user = current_user
     @car.user = @user
     authorize @car
-    if @car.save!
+    if @car.save
       redirect_to car_path(@car)
     else
       render 'new'
