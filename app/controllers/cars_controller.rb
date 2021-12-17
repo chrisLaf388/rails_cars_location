@@ -80,6 +80,15 @@ class CarsController < ApplicationController
     @user = User.find(params[:user_id]) if params[:user_id].present?
     @cars = Car.where(user: @user)
     authorize @cars
+        @markers = @cars.geocoded.map do |car|
+      {
+        lat: car.latitude,
+        lng: car.longitude,
+        info_window: render_to_string(partial: "info_window", locals: { car: car }),
+        image_url: car.photo.key,
+        price: car.price_per_day
+      }
+    end
   end
 
 private
