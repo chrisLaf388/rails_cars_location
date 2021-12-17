@@ -10,10 +10,11 @@ class CarsController < ApplicationController
     else
       @cars = policy_scope(Car).order(updated_at: :desc)
       @cars = @cars.search_by_name(params["name"]) unless params["name"].empty?
-      @cars = @cars.search_by_category(params["search_by_category"]) unless params["category"].empty?
+      @cars = @cars.search_by_category(params["category"]) unless params["category"].empty?
       @cars = @cars.search_by_transmision(params["transmision"]) unless params["transmision"].empty?
       @cars = @cars.search_by_energy(params["energy"]) unless params["energy"].empty?
       @cars = @cars.search_by_city(params["city"]) unless params["city"].empty?
+
 
 
     #   @cars = Car.where(nil)
