@@ -12,7 +12,6 @@
 <%= render 'shared/warriorsearchbar' %>
 
 
-
 <div class="card-grid mb-5">
   <% @cars.each do |car|%>
       <div class="card rounded" style="background-image: url(<%= "#{cl_image_path car.photo.key}" =%> )">
