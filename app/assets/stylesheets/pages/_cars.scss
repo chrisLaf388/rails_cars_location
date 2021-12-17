@@ -13,13 +13,14 @@ h1 {
 
 .card-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-gap: 4px;
+    grid-template-columns: 1fr;
+    grid-gap: 8px;
     flex-grow: 1;
 }
 
 .card-body {
-  position: relative
+  position: relative;
+  width: 100%
 }
 
 .card-body .btn {

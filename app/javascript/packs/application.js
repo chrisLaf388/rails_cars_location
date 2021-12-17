@@ -7,7 +7,6 @@ import Rails from "@rails/ujs"
 import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
-import { initMapbox } from '../plugins/init_mapbox';
 
 Rails.start()
 Turbolinks.start()
@@ -24,14 +23,20 @@ import "bootstrap";
 
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
+import { initMapbox } from '../plugins/init_mapbox';
 import { navbarActiveClass } from '../channels/navbar_active_class';
 
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
 <<<<<<< HEAD
+<<<<<<< HEAD
   initMapbox();
 =======
   navbarActiveClass();
 >>>>>>> 6e0c2db06eabd202ecbfcd87433692e2a3e50c6f
+=======
+  initMapbox();
+  // navbarActiveClass();
+>>>>>>> master
 });

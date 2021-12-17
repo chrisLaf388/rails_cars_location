@@ -2,7 +2,16 @@ class CarsController < ApplicationController
   before_action :set_car, except: [:index, :new, :create, :car_params, :category]
 
   def index
+<<<<<<< HEAD
     @cars = policy_scope(Car).order(updated_at: :desc)
+=======
+    if params[:query].present?
+      @cars = Car.search_by_name_and_category_city(params[:query]).order(updated_at: :desc)
+    else
+      @cars = policy_scope(Car).order(updated_at: :desc)
+    end
+    console
+>>>>>>> master
     @markers = @cars.geocoded.map do |car|
       {
         lat: car.latitude,
