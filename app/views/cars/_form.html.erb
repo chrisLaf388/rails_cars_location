@@ -4,8 +4,8 @@
   <%= f.input :category, collection: Car::CATEGORY %>
   <%= f.input :horse_power %>
   <%= f.input :price_per_day %>
-  <%= f.input :transmision %>
-  <%= f.input :energy %>
+  <%= f.input :transmision, collection: Car::TRANSMISION%>
+  <%= f.input :energy, collection: Car::ENERGY %>
   <%= f.input :year_circulation %>
   <%= f.input :city %>
   <%= f.input :photo, as: :file %>

@@ -1,50 +1,44 @@
-<h2>My Cars Pending</h2>
-<%# <%= "CarPhoto - CarName - can be bookign by User.name Valider ou pas" %>
-<% current_user.cars.each do |car|
-  car.bookings.each do |booking| %>
-    <ul>
-      <li>
-        <% car_id = booking.car_id %>
-        <% car = Car.find(car_id) %>
-        <% user = User.find(booking.user_id) %>
-        <%= link_to car.name, car_path(car) %>
-        By : <%= user.email %>
-        Start : <%= booking.start_at %>,
-        End : <%= booking.end_at %>,
-        Price : <%= booking.total_price %>€
-        <%= link_to "Delete Booking",
-                    booking_path(booking),
-                    method: :delete,
-                    class: "btn btn-danger",
-                    data: { confirm: "Are you sure?" } %>
-        <%= link_to 'accepte', accept_booking_path(booking),method: :patch %>
-        <%= link_to 'decline', decline_booking_path(booking),method: :patch %>
-      </li>
-    </ul>
+<div class="title d-flex justify-content-around p-3">
+<h3 class="btn btn-primary btn-lg m-0" onClick="toggleContent()">Cars</h3>
+<h3 class="btn btn-primary btn-lg m-0" onClick="toggleContent()">Bookings</h3>
+</div>
+<div id="cars" class="tab_content">
+  <% current_user.cars.each do |car|
+    car.bookings.each do |booking| %>
+      <ul>
+        <li>
+          <% car_id = booking.car_id %>
+          <% car = Car.find(car_id) %>
+          <% user = User.find(booking.user_id) %>
+          <%= render 'shared/notificationdashboard', format: "pending", user: user, booking: booking, car: car %>
+        </li>
+      </ul>
+    <% end %>
   <% end %>
-<% end %>
-<h2>My Bookings</h2>
-<%= 'all bookings of the users' %>
-<% @bookings.each do |booking| %>
-<ul>
-  <li>
-    <% car_id = booking.car_id %>
-    <% car = Car.find(car_id) %>
-    <%= link_to car.name, car_path(car) %>
-    Start : <%= booking.start_at %>,
-    End : <%= booking.end_at %>,
-    Price : <%= booking.total_price %>€
-    <%= link_to "Delete Booking",
-                booking_path(booking),
-                method: :delete,
-                class: "btn btn-danger",
-                data: { confirm: "Are you sure?" } %>
-    <%= "Pending...." if booking.status == nil %>
-    <%= "accepted" if booking.status == true %>
-    <%= "declined" if booking.status == false %>
+</div>
+<div id="bookings" class="tab_content no_show">
+  <% @bookings.each do |booking| %>
+  <ul>
+    <li>
+      <% car_id = booking.car_id %>
+      <% car = Car.find(car_id) %>
+      <% owner_id = car.user_id %>
+      <% owner = User.find(owner_id) %>
+      <%= render 'shared/notificationdashboard', format: "booking", user: owner, booking: booking, car: car %>
+    </li>
+  </ul>
+  <% end %>
+</div>
 
-  </li>
-</ul>
-<% end %>
-
-<%= console %>
+<script>
+  const toggleContent = () => {
+    const toggleTitle = event.currentTarget.innerHTML.toLowerCase()
+    console.log(toggleTitle)
+    const headers = document.querySelectorAll('.tab_content')
+    headers.forEach((header) => {
+      header.classList.add('no_show')
+    })
+    const toShow = document.getElementById(toggleTitle)
+    toShow.classList.remove('no_show')
+  }
+</script>

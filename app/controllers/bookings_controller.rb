@@ -26,16 +26,31 @@ class BookingsController < ApplicationController
     redirect_to dashboard_path
   end
 
+  def decline
+    @booking = Booking.find(params[:id])
+    authorize @booking
+    if @booking.update(status: false)
+      redirect_to dashboard_path
+      flash[:message] = "You Decline this book!"
+    else
+      redirect_to dashboard_path
+      flash[:message] = "ERROR!"
+    end
+  end
+
   def accept
     @booking = Booking.find(params[:id])
     authorize @booking
-    @booking.status = true
+    if @booking.update(status: true)
+      redirect_to dashboard_path
+      flash[:message] = "You Accepted this book!"
+    else
+      redirect_to dashboard_path
+      flash[:message] = "ERROR!"
+    end
   end
 
-  def decline
-    authorize @booking
-    @booking.status = false
-  end
+
 
   private
 
