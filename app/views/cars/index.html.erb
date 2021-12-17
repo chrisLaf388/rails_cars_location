@@ -1,7 +1,15 @@
 
+<<<<<<< HEAD
 <div class="flex-container d-flex">
   <div class="card-grid mb-5">
     <% @cars.each do |car|%>
+=======
+<%= render 'shared/searchbar' %>
+<%= render 'shared/warriorsearchbar' %>
+
+<div class="card-grid mb-5">
+  <% @cars.each do |car|%>
+>>>>>>> 7e7186d58a10448888112475e24247f27a70f58d
       <div class="card rounded" style="background-image: url(<%= "#{cl_image_path car.photo.key}" =%> )">
         <div class="card-body">
           <h5 class="card-title">
