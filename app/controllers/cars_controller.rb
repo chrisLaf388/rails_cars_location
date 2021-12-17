@@ -7,7 +7,7 @@ class CarsController < ApplicationController
     else
       @cars = policy_scope(Car).order(updated_at: :desc)
     end
-    console
+    
     @markers = @cars.geocoded.map do |car|
       {
         lat: car.latitude,
