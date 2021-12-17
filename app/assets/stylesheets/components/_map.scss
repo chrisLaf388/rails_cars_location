@@ -1,44 +1,44 @@
 * {
-    box-sizing: content-box;
+  box-sizing: content-box;
 }
 
 .card-popup {
-    display: flex;
-    justify-content: center;
-    background-size: cover;
+  display: flex;
+  justify-content: center;
+  background-size: cover;
 }
 
 .card-info {
-    height: 100px;
-    width: 150px;
+  height: 100px;
+  width: 150px;
 }
 
 
 .mapboxgl-popup-content {
-    font-family: 'Open Sans', sans-serif;
-    width: 100%;
-  }
+  font-family: 'Open Sans', sans-serif;
+  width: 100%;
+}
 
-  #map {
-    position: sticky;
-    top: 0;
-    margin-top: 19px;
-    margin-left: 20px;
-  }
+#map {
+  position: sticky;
+  top: 0;
+  margin-top: 19px;
+  margin-left: 20px;
+}
 
-  .container {
-      margin: auto;
-  }
+.container {
+    margin: auto;
+}
 
-  .card-info .btn {
-    position: absolute;
-    bottom: 10px;
-    color: white;
-    padding: 4px 8px;
-    border-radius: 4px;
-    font-size: 10px;
-    font-weight: bold;
-    background: linear-gradient(#167FFB, #0F60C4);
-    transition: background 0.3s ease;
-    border: 1px solid #0F60C4;
-  }
+.card-info .btn {
+  position: absolute;
+  bottom: 10px;
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 10px;
+  font-weight: bold;
+  background: linear-gradient(#167FFB, #0F60C4);
+  transition: background 0.3s ease;
+  border: 1px solid #0F60C4;
+}
