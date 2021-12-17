@@ -1,30 +1,44 @@
-<h2 class="text-center">My Cars Pending</h2><h2 class="text-center">My Bookings</h2>
-
-<%# <%= "CarPhoto - CarName - can be bookign by User.name Valider ou pas" %>
-<% current_user.cars.each do |car|
-  car.bookings.each do |booking| %>
-    <ul>
-      <li>
-        <% car_id = booking.car_id %>
-        <% car = Car.find(car_id) %>
-        <% user = User.find(booking.user_id) %>
-        <%= render 'shared/notificationdashboard', format: "pending", user: user, booking: booking, car: car %>
-      </li>
-    </ul>
+<div class="title d-flex justify-content-around p-3">
+<h3 class="btn btn-primary btn-lg m-0" onClick="toggleContent()">Cars</h3>
+<h3 class="btn btn-primary btn-lg m-0" onClick="toggleContent()">Bookings</h3>
+</div>
+<div id="cars" class="tab_content">
+  <% current_user.cars.each do |car|
+    car.bookings.each do |booking| %>
+      <ul>
+        <li>
+          <% car_id = booking.car_id %>
+          <% car = Car.find(car_id) %>
+          <% user = User.find(booking.user_id) %>
+          <%= render 'shared/notificationdashboard', format: "pending", user: user, booking: booking, car: car %>
+        </li>
+      </ul>
+    <% end %>
   <% end %>
-<% end %>
-<h2 class="text-center">My Bookings</h2>
-<%= 'all bookings of the users' %>
-<% @bookings.each do |booking| %>
-<ul>
-  <li>
-    <% car_id = booking.car_id %>
-    <% car = Car.find(car_id) %>
-    <% owner_id = car.user_id %>
-    <% owner = User.find(owner_id) %>
-    <%= render 'shared/notificationdashboard', format: "booking", user: owner, booking: booking, car: car %>
-  </li>
+</div>
+<div id="bookings" class="tab_content no_show">
+  <% @bookings.each do |booking| %>
+  <ul>
+    <li>
+      <% car_id = booking.car_id %>
+      <% car = Car.find(car_id) %>
+      <% owner_id = car.user_id %>
+      <% owner = User.find(owner_id) %>
+      <%= render 'shared/notificationdashboard', format: "booking", user: owner, booking: booking, car: car %>
+    </li>
+  </ul>
+  <% end %>
+</div>
 
-</ul>
-<% end %>
-
+<script>
+  const toggleContent = () => {
+    const toggleTitle = event.currentTarget.innerHTML.toLowerCase()
+    console.log(toggleTitle)
+    const headers = document.querySelectorAll('.tab_content')
+    headers.forEach((header) => {
+      header.classList.add('no_show')
+    })
+    const toShow = document.getElementById(toggleTitle)
+    toShow.classList.remove('no_show')
+  }
+</script>

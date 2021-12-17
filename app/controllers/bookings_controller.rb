@@ -48,7 +48,6 @@ class BookingsController < ApplicationController
       redirect_to dashboard_path
       flash[:message] = "ERROR!"
     end
-    raise
   end
 
 
