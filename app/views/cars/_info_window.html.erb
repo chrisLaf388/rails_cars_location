@@ -1,2 +1,10 @@
-<h2><%= car.name %></h2>
-<p><%= car.city %></p>
+<div class="card-popup" style="background-image: url(<%= "#{cl_image_path car.photo.key}" =%> )">
+    <div class="card-info">
+        <h5 class="card-title">
+            <%= car.name %>
+        </h5>
+        <p class="card-text"> <%= car.category %> - <%= car.transmision %> - <strong><%= car.price_per_day %>€</strong>  </p>
+            <%= link_to 'Go!', car_path(car), class:"btn btn-primary" %>
+    </div>
+</div>
+

@@ -2,7 +2,6 @@ class CarsController < ApplicationController
   before_action :set_car, except: [:index, :new, :create, :car_params, :category]
 
   def index
-    console
     if params.keys == ["controller", "action"]
       @cars = Car.all
     elsif params["query"].present?
@@ -14,8 +13,6 @@ class CarsController < ApplicationController
       @cars = @cars.search_by_transmision(params["transmision"]) unless params["transmision"].empty?
       @cars = @cars.search_by_energy(params["energy"]) unless params["energy"].empty?
       @cars = @cars.search_by_city(params["city"]) unless params["city"].empty?
-
-
 
     #   @cars = Car.where(nil)
     #   raise
@@ -30,12 +27,14 @@ class CarsController < ApplicationController
     end
 
     @markers = @cars.geocoded.map do |car|
-        {
-          lat: car.latitude,
-          lng: car.longitude,
-          info_window: render_to_string(partial: "info_window", locals: { car: car })
-        }
-      end
+      {
+        lat: car.latitude,
+        lng: car.longitude,
+        info_window: render_to_string(partial: "info_window", locals: { car: car }),
+        image_url: car.photo.key,
+        price: car.price_per_day
+      }
+    end
   end
 
   def show
