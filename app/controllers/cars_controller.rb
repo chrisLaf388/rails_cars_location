@@ -76,10 +76,16 @@ class CarsController < ApplicationController
     authorize @cars
   end
 
+  def mine
+    @user = User.find(params[:user_id]) if params[:user_id].present?
+    @cars = Car.where(user: @user)
+    authorize @cars
+  end
+
 private
 
   def set_car
-    @car = Car.find(params[:id])
+    @car = Car.find(params[:id]) if params[:id].present?
   end
 
   def car_params
