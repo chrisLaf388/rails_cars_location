@@ -6,15 +6,15 @@
   </div>
   <div>
     <%= label_tag "Category" %>
-    <%= select_tag :category, options_for_select(Car::CATEGORY.dup << "") %>
+    <%= select_tag :category, options_for_select(Car::CATEGORY.dup.unshift("")) %>
   </div>
   <div>
     <%= label_tag "Transmission" %>
-    <%= select_tag :transmision, options_for_select(Car::TRANSMISION.dup << "") %>
+    <%= select_tag :transmision, options_for_select(Car::TRANSMISION.dup.unshift("")) %>
   </div>
   <div>
     <%= label_tag "Fuel Type" %>
-    <%= select_tag :energy, options_for_select(Car::ENERGY.dup << "")  %>
+    <%= select_tag :energy, options_for_select(Car::ENERGY.dup.unshift(""))  %>
   </div>
   <div>
     <%= label_tag "City" %>
