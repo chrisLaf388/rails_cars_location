@@ -1,13 +1,10 @@
-
 <% if @current_user %>
-  <%= link_to 'My cars', cars_mine_path(@current_user), class:"btn btn-primary mt-3" %>
+  <%= link_to 'My cars', cars_mine_path, class:"btn btn-primary mt-3" %>
 <% end %>
 <% console %>
 
 <%= render 'shared/searchbar' %>
 <%= render 'shared/warriorsearchbar' %>
-
-
 
 <div class="card-grid mb-5">
   <% @cars.each do |car|%>
